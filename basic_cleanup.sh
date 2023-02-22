@@ -11,10 +11,10 @@ echo "delete files without revisionDesc status='done'"
 find  -type f -name "D_*.xml" -print0 | xargs --null grep -Z -L 'revisionDesc status="done"' | xargs --null rm
 
 echo "delete file which cannot be parsed by lxml parser"
-python "${python_folder}delete_invalid_files.py"
+python "${python_folder}/delete_invalid_files.py"
 
 echo "fixing titles"
-python "${python_folder}fix_titles.py"
+python "${python_folder}/fix_titles.py"
 
 echo "fix entity reference IDs"
 find $indices_folder -type f -name "*.xml"  -print0 | xargs -0 sed -i -e 's@<person xml:id="person__@<person xml:id="pmb@g'
@@ -41,4 +41,4 @@ echo "denormalize indices in cases"
 denormalize-indices -f "./data/cases_tei/C_*.xml" -i "./data/indices/*.xml" -m ".//*[@ref]/@ref" -x ".//tei:titleStmt/tei:title[1]/text()" -b pmb11988
 
 echo "remove listEvent from back elements"
-python "{$python_folder}rm_listevent.py"
+python "${python_folder}/rm_listevent.py"
