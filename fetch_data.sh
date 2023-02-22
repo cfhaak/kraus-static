@@ -11,51 +11,25 @@ if [ "${be_quiet}" != false ] ;  then
 fi
 
 # # def vars
-python_folder="python_scripts"
+source_repo_url="https://github.com/karl-kraus/legalkraus-archiv/archive/refs/heads/main.zip"
 ziparchive="./ziparchive.zip"
-raw_tei_folder="./raw_tei"
-editions_folder="./data/editions"
-indices_folder="./data/indices"
-cases_folder="./data/cases_tei"
-boehm_folder="./boehm_tei"
-kraus_archive_top_level_folder="${raw_tei_folder}/legalkraus-data-main"
-boehm_archive_top_level_folder="${raw_tei_folder}/boehm-retro-main"
+import_destination_folder="./raw_tei"
+data_folder="./data"
+import_data_folder="${import_destination_folder}/legalkraus-archiv-main/data"
 
-# # init import directory
-rm -rf $raw_tei_folder
-# # 1. kraus archive
 # # get data from archive
 echo "fetch kraus archive"
-wget $q_flag https://github.com/karl-kraus/legalkraus-data/archive/refs/heads/main.zip --output-document=$ziparchive
+wget $q_flag $source_repo_url --output-document=$ziparchive
 # # unzip files to directory
-unzip $q_flag $ziparchive -d $raw_tei_folder
-# # remove old/zip files
-rm -rf $ziparchive
-rm -rf $editions_folder
-rm -rf $indices_folder
-rm -rf $cases_folder
+echo "unzip retrieved file"
+unzip $q_flag $ziparchive -d $import_destination_folder
+# # remove datafolder containing old files
+echo "removing old files"
+rm -rf "${data_folder}"
 # # move new files to destination
-mv "${kraus_archive_top_level_folder}/objects" $editions_folder
-mv "${kraus_archive_top_level_folder}/old_cols" $cases_folder
-mv "${kraus_archive_top_level_folder}/indices" $indices_folder
+echo "copy new files to destination"
+cp -rf "${import_data_folder}/." "${data_folder}"
 # # delete current archive import
-rm -rf $raw_tei_folder
-
-# # 2. boehm archive
-echo "fetch boehm archive"
-wget $q_flag https://github.com/karl-kraus/boehm-retro/archive/refs/heads/main.zip --output-document=$ziparchive
-# unzip files to directory
-unzip $q_flag $ziparchive -d $raw_tei_folder
-# # remove old/zip files
-rm -rf $ziparchive
-rm -rf $boehm_folder
-# # move new files to destination
-mkdir $boehm_folder
-mv "${boehm_archive_top_level_folder}/data/editions" $boehm_folder
-# # delete current import
-rm -rf $raw_tei_folder
-
-
-
-# echo "create cases-index.json"
-python "${python_folder}/create_case_index.py"
+echo "removing import-zip and dir "
+rm -f $ziparchive
+rm -rf $import_destination_folder
