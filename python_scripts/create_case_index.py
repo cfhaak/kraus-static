@@ -243,7 +243,7 @@ if __name__ == "__main__":
         hands = set()
         for d in case['docs']:
             try:
-                doc = TeiReader(f"../data/editions/{d}")
+                doc = TeiReader(f"./data/editions/{d}")
             except:
                 failed.append(d)
                 continue

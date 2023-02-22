@@ -7,7 +7,7 @@ from utils import gsheet_to_df, G_SHEET_LEGAL
 from tqdm import tqdm
 
 df = gsheet_to_df(G_SHEET_LEGAL)
-LIST_LEGAL = "../data/indices/listlegal.xml"
+LIST_LEGAL = "./data/indices/listlegal.xml"
 
 df['date_iso'] = df.apply(lambda row: f"{row['datum']}-01-01", axis=1)
 legal_doc = TeiReader(LIST_LEGAL)

@@ -1,7 +1,7 @@
 from acdh_tei_pyutils.tei import TeiReader
 # import index from schnitzler
 # & remov error from import
-index_dir = "./../data/"
+index_dir = "./data/"
 ns = {
     "tei": "http://www.tei-c.org/ns/1.0",
     "xml": ""

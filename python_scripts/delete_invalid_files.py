@@ -4,7 +4,7 @@ import os
 from acdh_tei_pyutils.tei import TeiReader
 # finds files with malformed xml, deletes them, creates log.
 
-files = glob.glob('../data/*/*.xml')
+files = glob.glob('./data/*/*.xml')
 print(f"selected {len(files)}")
 
 faulty = []

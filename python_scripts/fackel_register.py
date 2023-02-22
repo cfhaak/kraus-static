@@ -7,7 +7,7 @@ from collections import defaultdict
 from utils import gsheet_to_df, G_SHEET_FACKEL
 
 df = gsheet_to_df(G_SHEET_FACKEL)
-LIST_FACKEL = "../data/indices/listfackel.xml"
+LIST_FACKEL = "./data/indices/listfackel.xml"
 tei_ns = "{http://www.tei-c.org/ns/1.0}"
 df[['p_from', 'p_to']] = df['pages'].str.split('–', 1, expand=True)
 

@@ -2,7 +2,7 @@ import glob
 from acdh_tei_pyutils.tei import TeiReader
 from tqdm import tqdm
 
-files = glob.glob('../data/editions/D_*.xml')
+files = glob.glob('./data/editions/D_*.xml')
 
 for x in tqdm(files, total=len(files)):
     try:
