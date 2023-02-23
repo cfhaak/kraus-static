@@ -26,9 +26,6 @@ jobs:
     - name: Build
       run: |
         ant
-    - name: Build Index
-      run: |
-        ./build_index.sh
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:

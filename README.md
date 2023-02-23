@@ -3,7 +3,8 @@
 
 * sollte [Rechtsakten Karl Kraus](https://www.kraus.wienbibliothek.at/) statisch abbilden
 * daten stammen aus [kraus-archiv](https://github.com/karl-kraus/legalkraus-archiv)
-* soll besser sein als [das](https://github.com/karl-kraus/kraus-static)
+* sollte besser sein als [das](https://github.com/karl-kraus/kraus-static)
+* website [hier](https://cfhaak.github.io/kraus-static/)
 
 
 ## install
